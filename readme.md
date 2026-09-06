@@ -3,7 +3,7 @@
 This repository contains the notebooks used to analyze learner gaze and interaction data for three research questions (RQs).
 
 
-## 🚀 Getting Started
+## Getting Started
 
 Before running the notebooks, download the dataset and the LA-CaRM TNA
 notebook.
@@ -188,7 +188,7 @@ The notebooks must be run in the following sequential order:
 #### Output
 - **Transition Network Heatmaps:** Display transition strengths and weights between the three K-Means clusters across all three conditions.
 
-## 🔄 Complete Workflow Map
+## Complete Workflow Map
 
 ```mermaid
 flowchart TD
