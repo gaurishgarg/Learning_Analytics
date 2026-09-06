@@ -24,6 +24,7 @@ repository root folder.
 
 The folder structure should be similar to:
 
+```text
 Learning_Analytics/
 ├── README.md
 ├── robo.csv
@@ -101,10 +102,8 @@ The notebooks must be run in the following sequential order:
 
 #### Main Steps
 - Read raw interaction data (`robo.csv`).
-- Filter and clean relevant interaction attributes.
 - Map interaction events to learning elements.
-- Generate precise interaction timestamps.
-- Remove orphaned interactions lacking an associated learning element.
+- Remove interactions lacking an associated learning element.
 
 #### Output
 - `interaction_clean_final.csv` *(Used in RQ3 data preparation)*
@@ -190,42 +189,35 @@ The notebooks must be run in the following sequential order:
 
 ## 🔄 Complete Workflow Map
 
-```text
-Raw Gaze Data
-     │
-     ▼
-[1] gaze_Data_aoi_sequence_one.ipynb
-     │
-     ├─► aoi_sequence_final.csv
-     └─► gaze_episodes_final.csv ──┐
-                                   │
-Raw Interaction Data (robo.csv)   │
-     │                             │
-     ▼                             │
-[2] interaction_data_one.ipynb     │
-     │                             │
-     └─► interaction_clean_final.csv│
-                                   │
-                                   ▼
-                       [3] aggregation_rq1and2.ipynb
-                                   │
-                                   └─► clustered_element_analysis.csv
-                                                   │
-                                                   ▼
-                                       [4] preparation_for_rq3(1).ipynb
-                                                   │
-                                                   ├─► gaze_interaction_for_spm.csv
-                                                   └─► interaction_for_spm.csv
-                                                               │
-                                                               ▼
-                                                            LA-CaRM
-                                                               │
-                                                               ▼
-                                                 Transition Weight CSV Downloads
-                                                 (weights_total.csv, weights_gaze.csv, weights_non_gaze.csv)
-                                                               │
-                                                               ▼
-                                                       [5] tna.ipynb
-                                                               │
-                                                               ▼
-                                                   TNA Transition Heatmaps
+```mermaid
+flowchart TD
+    A[Raw Gaze Data] --> B["1. gaze_Data_aoi_sequence_one.ipynb"]
+
+    B --> C[aoi_sequence_final.csv]
+    B --> D[gaze_episodes_final.csv]
+
+    E[Raw Interaction Data<br>robo.csv] --> F["2. interaction_data_one.ipynb"]
+    F --> G[interaction_clean_final.csv]
+
+    D --> H["3. aggregation_rq1and2.ipynb"]
+    G --> H
+    C --> H
+
+    H --> I[clustered_element_analysis.csv]
+
+    I --> J["4. preparation_for_rq3.ipynb"]
+    G --> J
+    D --> J
+
+    J --> K[gaze_interaction_for_spm.csv]
+    J --> L[interaction_for_spm.csv]
+
+    K --> M[LA-CaRM]
+    L --> M
+
+    M --> N["Transition Weight CSVs<br>weights_total.csv<br>weights_gaze.csv<br>weights_non_gaze.csv"]
+
+    N --> O["5. tna.ipynb"]
+
+    O --> P[TNA Transition Heatmaps]
+```
