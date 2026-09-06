@@ -70,7 +70,7 @@ The notebooks must be run in the following sequential order:
 
 ---
 
-## 📖 Pipeline Stages
+## Pipeline Stages
 
 ### 1. Gaze Data and Gaze Episodes
 
