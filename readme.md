@@ -34,6 +34,7 @@ Learning_Analytics/
 ├── preparation_for_rq3.ipynb
 ├── tna.ipynb
 └── ...
+```
 
 The code files and dataset should be located in the same root folder so that
 the notebooks can access the required input files.
