@@ -19,7 +19,7 @@ From the downloaded dataset:
 
 ### 2. Download the Repository
 
-Download or clone this repository and place the downloaded dataset in the
+Download or clone this repository and place the downloaded dataset root folder in the
 repository root folder.
 
 The folder structure should be similar to:
