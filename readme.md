@@ -160,7 +160,32 @@ The notebooks must be run in the following sequential order:
 - `interaction_for_spm.csv`
 
 ---
-### 5. LA-CaRM and Transition Weights
+---
+### 5. Verification and Manual Group Preparation
+
+- **Notebook:** `verify.ipynb`
+
+- **Description:** Verifies the prepared sequence data and creates the manual/predefined cluster mapping for comparison with the K-Means clusters.
+
+#### Inputs
+
+- `gaze_interaction_for_spm.csv`
+- `interaction_for_spm.csv`
+- `clustered_element_analysis.csv`
+
+#### Main Steps
+
+- Verify the prepared gaze and interaction sequences.
+- Check cluster mappings and event ordering.
+- Create the manual/predefined cluster grouping.
+- Save the manually grouped interaction sequence for LA-CaRM.
+
+#### Output
+
+- `interaction_spm_manual_groups.csv`
+
+---
+### 6. LA-CaRM and Transition Weights
 
 - **Tool:** LA-CaRM (External Processing)
 
@@ -170,15 +195,19 @@ The notebooks must be run in the following sequential order:
 
   - `interaction_cluster_activity`: Used for the combined gaze and interaction analysis.
 
-- **Transition-Weight CSV Output:**
+- **Transition-Weight CSV Outputs:**
 
   - `weights_total.csv` (Combined gaze and interaction data)
 
+  - `manual_matrix.csv` (Manual/predefined cluster grouping)
+
 - **Manual Cluster Analysis:**
 
-  A manual/predefined cluster grouping is also entered into LA-CaRM using the same prepared sequence data. The resulting transition-weight matrix is downloaded as `manual_matrix.csv`.
+  - `interaction_spm_manual_groups.csv`: Manual/predefined cluster grouping created in `verify.ipynb` and uploaded to LA-CaRM.
+
+  - `manual_matrix.csv`: Transition-weight matrix downloaded from LA-CaRM using the manual grouping.
 ---
-### 6. TNA Visualization
+### 7. TNA Visualization
 
 - **Notebook:** `tna.ipynb`
 
