@@ -3,7 +3,7 @@
 This repository contains the notebooks used to analyze learner gaze and interaction data for three research questions (RQs).
 
 
-## Getting Started
+## 🚀 Getting Started
 
 Before running the notebooks, download the dataset and the LA-CaRM TNA
 notebook.
@@ -19,7 +19,7 @@ From the downloaded dataset:
 
 ### 2. Download the Repository
 
-Download or clone this repository and place the downloaded dataset root folder in the
+Download or clone this repository and place the downloaded dataset in the
 repository root folder.
 
 The folder structure should be similar to:
@@ -51,10 +51,15 @@ Run the notebooks sequentially as described in the
 [Analysis Pipeline Overview](#-analysis-pipeline-overview):
 
 1. `gaze_Data_aoi_sequence_one.ipynb`
+
 2. `interaction_data_one.ipynb`
+
 3. `aggregation_rq1and2.ipynb`
+
 4. `preparation_for_rq3.ipynb`
-5. LA-CaRM TNA processing
+
+5. `verify.ipynb`
+
 6. `tna.ipynb`
 
 
@@ -70,7 +75,7 @@ The notebooks must be run in the following sequential order:
 
 ---
 
-## Pipeline Stages
+## 📖 Pipeline Stages
 
 ### 1. Gaze Data and Gaze Episodes
 
@@ -155,70 +160,39 @@ The notebooks must be run in the following sequential order:
 - `interaction_for_spm.csv`
 
 ---
-
 ### 5. LA-CaRM and Transition Weights
 
-* **Tool:** LA-CaRM (External Processing)
-* **Description:** LA-CaRM processes the prepared sequences to mine transitions and compute transition weights.
+* **\*\*Tool:\*\*** LA-CaRM (External Processing)
 
-#### Feature Usage
-* **From `gaze_interaction_for_spm.csv`:**
-  - `interaction_cluster_activity`: Used for combined gaze and interaction analysis.
-  - `gaze_cluster_activity`: Used for gaze-only analysis.
-* **From `interaction_for_spm.csv`:**
-  - `non_gaze_cluster_activity`: Used for non-gaze interaction analysis.
+* **\*\*Description:\*\*** LA-CaRM processes the prepared sequences to mine transitions and compute transition weights.
 
-#### Transition-Weight CSV Outputs (Exported from LA-CaRM)
-- `weights_total.csv` (Interacted: combined gaze and interaction data)
-- `weights_gaze.csv` (Gazed: gaze-only data)
-- `weights_non_gaze.csv` (Non-Gaze Interaction: interaction-only data)
+* **\*\*Feature Used:\*\***
 
+  - `interaction_cluster_activity`: Used for the combined gaze and interaction analysis.
+
+* **\*\*Transition-Weight CSV Output:\*\***
+
+  - `weights_total.csv` (Combined gaze and interaction data)
+
+* **\*\*Manual Cluster Analysis:\*\***
+
+  A manual/predefined cluster grouping is also entered into LA-CaRM using the same prepared sequence data. The resulting transition-weight matrix is downloaded as `manual_matrix.csv`.
 ---
-
 ### 6. TNA Visualization
 
-* **Notebook:** `tna.ipynb`
-* **Description:** Reads exported transition-weight CSV files and renders transition network heatmaps.
+* **\*\*Notebook:\*\*** `tna.ipynb`
 
-#### Inputs
-- `weights_total.csv`
-- `weights_gaze.csv`
-- `weights_non_gaze.csv`
+* **\*\*Description:\*\*** Reads the transition-weight CSV files and renders transition-weight heatmaps and comparisons between K-Means and manual/predefined clusters.
+
+* **\*\*Inputs:\*\***
+
+  - `weights_total.csv`
+  - `manual_matrix.csv`
+
+* **\*\*Output:\*\***
+
+  - **\*\*Transition Network Heatmaps:\*\*** Display transition strengths and weights between the three K-Means clusters.
+  - **\*\*K-Means vs Manual Comparison:\*\*** Compare inter-cluster transition weights between the K-Means and manual/predefined clusterings.
 
 #### Output
 - **Transition Network Heatmaps:** Display transition strengths and weights between the three K-Means clusters across all three conditions.
-
-## Complete Workflow Map
-
-```mermaid
-flowchart TD
-    A[Raw Gaze Data] --> B["1. gaze_Data_aoi_sequence_one.ipynb"]
-
-    B --> C[aoi_sequence_final.csv]
-    B --> D[gaze_episodes_final.csv]
-
-    E[Raw Interaction Data<br>robo.csv] --> F["2. interaction_data_one.ipynb"]
-    F --> G[interaction_clean_final.csv]
-
-    D --> H["3. aggregation_rq1and2.ipynb"]
-    G --> H
-    C --> H
-
-    H --> I[clustered_element_analysis.csv]
-
-    I --> J["4. preparation_for_rq3.ipynb"]
-    G --> J
-    D --> J
-
-    J --> K[gaze_interaction_for_spm.csv]
-    J --> L[interaction_for_spm.csv]
-
-    K --> M[LA-CaRM]
-    L --> M
-
-    M --> N["Transition Weight CSVs<br>weights_total.csv<br>weights_gaze.csv<br>weights_non_gaze.csv"]
-
-    N --> O["5. tna.ipynb"]
-
-    O --> P[TNA Transition Heatmaps]
-```
