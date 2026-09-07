@@ -116,7 +116,7 @@ The notebooks must be run in the following sequential order:
 
 ---
 
-### 3. RQ1 & RQ2: Gaze Analysis and Clustering
+### 3. RQ1: Gaze Analysis and Clustering
 
 * **Notebook:** `aggregation_rq1and2.ipynb`
 * **Description:** Aggregates gaze episodes to calculate element-level metrics and performs K-Means clustering.
@@ -130,7 +130,7 @@ The notebooks must be run in the following sequential order:
   - Average total gaze duration per learning element from `gaze_episodes_final.csv`
   - Average gaze episode count per learning element from `gaze_episodes_final.csv`
   - Switches per element from `aoi_sequence_final.csv` but not used to high correlation
-* **RQ2 (Clustering):** K-Means clustering is performed using:
+* **RQ1 (Clustering):** K-Means clustering is performed using:
   - `avg_gaze_duration`
   - `avg_episode_count`
   - *Result:* Grouping learning elements into **three distinct gaze-behavior clusters**.
@@ -140,7 +140,7 @@ The notebooks must be run in the following sequential order:
 
 ---
 
-### 4. RQ3: Data Preparation for Sequential Analysis
+### 4. RQ2: Data Preparation for Sequential Analysis
 
 * **Notebook:** `preparation_for_rq3.ipynb`
 * **Description:** Maps clusters to gaze and interaction events to prepare input sequences for sequential pattern mining and Transition Network Analysis (TNA).
@@ -162,37 +162,38 @@ The notebooks must be run in the following sequential order:
 ---
 ### 5. LA-CaRM and Transition Weights
 
-* **\*\*Tool:\*\*** LA-CaRM (External Processing)
+- **Tool:** LA-CaRM (External Processing)
 
-* **\*\*Description:\*\*** LA-CaRM processes the prepared sequences to mine transitions and compute transition weights.
+- **Description:** LA-CaRM processes the prepared sequences to mine transitions and compute transition weights.
 
-* **\*\*Feature Used:\*\***
+- **Feature Used:**
 
   - `interaction_cluster_activity`: Used for the combined gaze and interaction analysis.
 
-* **\*\*Transition-Weight CSV Output:\*\***
+- **Transition-Weight CSV Output:**
 
   - `weights_total.csv` (Combined gaze and interaction data)
 
-* **\*\*Manual Cluster Analysis:\*\***
+- **Manual Cluster Analysis:**
 
   A manual/predefined cluster grouping is also entered into LA-CaRM using the same prepared sequence data. The resulting transition-weight matrix is downloaded as `manual_matrix.csv`.
 ---
 ### 6. TNA Visualization
 
-* **\*\*Notebook:\*\*** `tna.ipynb`
+- **Notebook:** `tna.ipynb`
 
-* **\*\*Description:\*\*** Reads the transition-weight CSV files and renders transition-weight heatmaps and comparisons between K-Means and manual/predefined clusters.
+- **Description:** Reads the transition-weight CSV files and renders transition-weight heatmaps and comparisons between K-Means and manual/predefined clusters.
 
-* **\*\*Inputs:\*\***
+- **Inputs:**
 
   - `weights_total.csv`
   - `manual_matrix.csv`
 
-* **\*\*Output:\*\***
+- **Output:**
 
-  - **\*\*Transition Network Heatmaps:\*\*** Display transition strengths and weights between the three K-Means clusters.
-  - **\*\*K-Means vs Manual Comparison:\*\*** Compare inter-cluster transition weights between the K-Means and manual/predefined clusterings.
+  - **Transition Network Heatmaps:** Display transition strengths and weights between the three K-Means clusters.
+
+  - **K-Means vs Manual Comparison:** Compare inter-cluster transition weights between the K-Means and manual/predefined clusterings.
 
 #### Output
 - **Transition Network Heatmaps:** Display transition strengths and weights between the three K-Means clusters across all three conditions.
