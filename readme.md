@@ -224,5 +224,6 @@ The notebooks must be run in the following sequential order:
 
   - **K-Means vs Manual Comparison:** Compare inter-cluster transition weights between the K-Means and manual/predefined clusterings.
 
-#### Output
-- **Transition Network Heatmaps:** Display transition strengths and weights between the three K-Means clusters across all three conditions.
+> **Note:** The CSV files for gaze-only and non-gaze interaction analyses were initially generated and used during development, which is why references to them may still appear in some code. They are not part of the final analysis workflow and can be ignored if they are produced by the code.
+
+> **Note:** The code in this repository was developed with the assistance of AI, with the primary focus being on conducting and completing the analysis.
