@@ -3,7 +3,7 @@
 This repository contains the notebooks used to analyze learner gaze and interaction data for three research questions (RQs).
 
 
-## 🚀 Getting Started
+## Getting Started
 
 Before running the notebooks, download the dataset and the LA-CaRM TNA
 notebook.
@@ -19,7 +19,7 @@ From the downloaded dataset:
 
 ### 2. Download the Repository
 
-Download or clone this repository and place the downloaded dataset in the
+Download or clone this repository and place the downloaded dataset root folder in the
 repository root folder.
 
 The folder structure should be similar to:
@@ -75,7 +75,7 @@ The notebooks must be run in the following sequential order:
 
 ---
 
-## 📖 Pipeline Stages
+## Pipeline Stages
 
 ### 1. Gaze Data and Gaze Episodes
 
