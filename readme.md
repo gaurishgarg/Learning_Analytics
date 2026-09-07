@@ -160,7 +160,6 @@ The notebooks must be run in the following sequential order:
 - `interaction_for_spm.csv`
 
 ---
----
 ### 5. Verification and Manual Group Preparation
 
 - **Notebook:** `verify.ipynb`
